@@ -1,0 +1,48 @@
+footer {
+    display: block;
+    padding: 100px 0;
+    background-color: $color-white;
+    text-align: center;
+    font-family: $font1;
+    line-height: map-get($map_line_height, xl);
+
+    
+    @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, big-desktop), map-get($map-font-size, body-s), map-get($map-font-size, body-l));
+    
+    .footer-icons {
+        display: inline-block;
+        margin: 0 10px;
+
+        img {
+            width: 25px;
+        }
+    }
+
+    span {
+        display: block;
+        margin-top: 20px;
+        font-family: $font1;
+        
+        a {
+            text-decoration: none;
+            opacity: 0.7;
+            margin: 0 5px;
+            transition: 0.15s opacity ease-in-out;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@include mobile {
+    footer {
+        padding: 40px 0!important;
+        
+        span {
+            width: 80%!important;
+            margin: 0 auto!important;
+        }
+    }
+}

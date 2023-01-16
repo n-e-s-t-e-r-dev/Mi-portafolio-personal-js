@@ -1,0 +1,219 @@
+// MAPS
+$map-device-width: (
+    small-screen: 320px,
+    mobile: 640px,
+    tablet: 1024px,
+    laptop: 1366px,
+    big-laptop: 1600px,
+    desktop: 1920px,
+    big-desktop: 2560px
+);
+
+$map-font-size: (
+    nav-s: 14px,
+    nav-l: 16px,
+    
+    logo-s: 25px,
+    logo-l: 50px,
+
+    button-s: 10px,
+    button-l: 14px,
+
+    body-s: 16px,
+    body-l: 22px,
+
+    h3-s: 20px,
+    h3-l: 28px,
+
+    h2-s: 28px,
+    h2-l: 34px,
+
+    title-s: 32px,
+    title-l: 48px
+);
+
+$map-line-height: (
+    s: 1.2,
+    m: 1.4,
+    l: 1.6,
+    xl: 1.8,
+    2xl: 2
+);
+
+// COLORS
+$color-black: #222;
+$color-white: #ffffff;
+$dark-white: #fafafa;
+$color-base: #fffbf8;
+$color-base1: #dfd4d9;
+$color-base2: #c5ccb2;
+
+$color-accent1: #fff3eb;
+$color-accent2: #baa2b7;
+$color-accent3: #6b705c;
+$color-accent4: #a5a58d;
+
+// FONTS
+$font1: 'Lato', sans-serif;
+$font2: 'Lustria', serif;
+$font3: 'Inconsolata', monospace;
+
+// MIXINS
+// Fluid typography
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+    & {
+        @each $property in $properties {
+            #{$property}: $min-value;
+        }
+
+        @media screen and (min-width: $min-vw) {
+            @each $property in $properties {
+                #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+            }
+        }
+
+        @media screen and (min-width: $max-vw) {
+            @each $property in $properties {
+                #{$property}: $max-value;
+            }
+        }
+    }
+}
+
+// Border radius
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+// Vertical align
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+// RESPONSIVE
+@mixin mobile {
+    @media (max-width: #{map-get($map_device_width, tablet) - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile-landscape {
+    @media (max-width: #{map-get($map_device_width, tablet) - 1px}) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{map-get($map_device_width, tablet)}) and (max-width: #{map-get($map_device_width, laptop) - 1px}) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width: #{map-get($map_device_width, laptop)}) {
+        @content;
+    }
+}
+
+@mixin big-laptop {
+    @media (min-width: #{map-get($map_device_width, big-laptop)}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{map-get($map_device_width, desktop)}) {
+        @content;
+    }
+}
+
+@mixin big-desktop {
+    @media (min-width: #{map-get($map_device_width, big-desktop)}) {
+        @content;
+    }
+}
+
+// RULES
+html {
+    @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, desktop), map-get($map-font-size, body-s), map-get($map-font-size, body-l));
+    scroll-behavior: smooth; 
+
+    overflow-x: hidden!important;
+}
+
+body {
+    background-color: $color-white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+section {
+    display: block;
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+a,
+form {
+    color: $color-black;
+}
+
+h1,
+h2,
+h3,
+a,
+button {
+    font-family: $font1;
+}
+
+p,
+span,
+form {
+    font-family: $font2;
+}
+
+.link-button {
+    background-color: $color-black;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: small;
+    box-sizing: border-box;
+    display: inline-block;
+
+    @include border-radius(25px);
+}
+
+.hidden {
+    opacity: 0!important;
+    -webkit-user-select: none!important;
+       -moz-user-select: none!important;
+        -ms-user-select: none!important;
+            user-select: none!important;
+}
+
+.negative-index {
+    z-index: -1;
+    visibility: hidden;
+}
+
+.no-scroll {
+    overflow: hidden!important;
+}
+
+.no-transition {
+    transition: none!important;
+}

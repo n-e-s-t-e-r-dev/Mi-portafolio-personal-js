@@ -1,0 +1,184 @@
+//Scroll animation speed for slider
+$animationSpeed: 15s;
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100px * 9))}
+}
+
+//Slider gradient
+@mixin white-gradient {
+    background: linear-gradient(to right,  $color-base 0%,rgba(255,255,255,0) 100%);
+}
+
+#welcome-section {
+    background: rgb(255,251,248);
+    background: linear-gradient(180deg, rgb(255, 251, 248) 0%, rgba(255,243,235,1) 100%);
+    box-sizing: border-box;
+
+    #interactive-background {
+        display: block;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        #welcome-text {
+            display: inline-block;
+            position: relative;
+            margin: 140px 0 300px 0;
+            width: 60%;
+            max-width: 500px;
+            left: 15%;
+            top: 15%;
+            background-color: $color-white;
+            padding: 40px;
+            border-radius: 2px;
+            z-index: 1;
+            box-sizing: border-box;
+
+            h3 {
+                font-family: $font2;
+                margin-top: 0;
+                margin-bottom: 10px;
+                font-weight: 900;
+                letter-spacing: 1px;
+
+                @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, big-desktop), map-get($map-font-size, h3-s), map-get($map-font-size, h3-l));
+            }
+
+            p {
+                line-height: map-get($map_line_height, xl);
+                text-align: left;
+                font-family: $font1;
+                font-weight: 400;
+                margin: 0;
+                letter-spacing: 1px;
+
+                @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, big-desktop), map-get($map-font-size, body-s), map-get($map-font-size, body-l));
+            }
+        }
+
+        #welcome-background-1 {
+            display: inline-block;
+            position: absolute;
+            width: 60%;
+            max-width: 950px;
+            top: 30px;
+            right: 60px;
+            bottom: 150px;
+            background-color: $color-white;
+            background-image: url("../img/images/laptop-aesthetic.jpg");
+            background-size: cover;
+        }
+
+        #welcome-background-2 {
+            display: inline-block;
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 25%;
+            max-width: 400px;
+            bottom: 60px;
+            background-color: $color-white;
+            background-image: url("../img/images/plant.jpg");
+            background-size: cover;
+        }
+    }
+
+    #technologies {
+        padding: 80px 0 120px 0;
+        text-align: center;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        align-items: center;
+        
+        h3 {
+            @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, big-desktop), map-get($map-font-size, h3-s), map-get($map-font-size, h3-l));
+        }
+
+        .slider {
+            height: 60px;
+            margin: 60px auto 0 auto;
+            overflow:hidden;
+            position: relative;
+            width: 85%;
+            max-width: 700px;
+            
+            &::before,
+            &::after {
+                content: "";
+                height: 100%;
+                position: absolute;
+                width: 150px;
+                z-index: 2;
+            }
+            
+            &::after {
+                right: -1px;
+                top: 0;
+                transform: rotateZ(180deg);
+            }
+        
+            &::before {
+                left: 0;
+                top: 0;
+            }
+            
+            .slide-track {
+                animation: scroll $animationSpeed linear infinite;
+                display: flex;
+                width: calc(100px * 18);
+
+                .slide {
+                    width: 60px;
+                    margin: 0 20px;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+@include mobile {
+    #interactive-background {
+        min-height: 650px;
+        #welcome-text {
+            display: block!important;
+            position: relative!important;
+            margin: 190px auto 150px auto!important;
+            width: 80%!important;
+            top: 0!important;
+            left: 0!important;
+        }
+
+        #welcome-background-1 {
+            display: none!important;
+        }
+
+        #welcome-background-2 {
+            display: block!important;
+            position: absolute!important;
+            margin: 0 auto!important;
+            top: 0!important;
+            left: 0!important;
+            width: 100%!important;
+            max-width: none!important;
+            background-position: 50% 20%;
+
+
+        }
+    }
+
+    #technologies {
+        padding: 20px 0 80px 0!important;
+
+        .slider {
+            &::before,
+            &::after {
+                background: none!important;
+            }
+        }
+    }
+}

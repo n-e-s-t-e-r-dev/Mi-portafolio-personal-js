@@ -1,0 +1,173 @@
+header {
+    display: flex;
+    background-color: rgba(255,251,248,1);
+    box-sizing: border-box;
+    width: 100%;
+    padding: 50px 60px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+
+    #personal-logo {
+        text-decoration: none;
+        font-weight: bolder;
+        vertical-align: middle;
+
+        @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, big-desktop), map-get($map-font-size, logo-s), map-get($map-font-size, logo-l));
+    }
+
+    nav {
+        .nav-links {
+            margin: 0 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bolder;
+            letter-spacing: 2px;
+            
+            @include fluid-type(font-size, map-get($map-device-width, small-screen), map-get($map-device-width, desktop), map-get($map-font-size, nav-s), map-get($map-font-size, nav-l));
+        }
+
+        #logo-container {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+
+            a {
+                vertical-align: middle;
+                margin: 0 3px;
+
+                img {
+                    width: 18px;
+                }
+            }
+        }
+    }
+}
+
+@include mobile {
+    body {
+        padding: 0!important;
+    }
+
+    .loader {
+        z-index: 100;
+    }
+
+    header {
+        padding: 20px;
+        background-color: $color-black;
+        position: fixed!important;
+        top: 0!important;
+        z-index: 95!important;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: $color-black;
+            z-index: 94!important;
+          }
+
+        #personal-logo {
+            color: $color-white;
+            max-width: 60%;
+            z-index: 95!important;
+        }
+    
+        nav {
+            z-index: 93!important;
+            position: absolute;
+            background-color: $color-black;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: right;
+            transform: translateY(-100%);
+            transition: all 0.33s ease-in-out;
+
+            &.open {
+                transform: translateY(0%)!important;
+                top: 70px!important;
+            }
+
+            .nav-links {
+                letter-spacing: 1px;
+                color: $color-white;
+                margin: 0;
+                padding: 14px 16px;
+                text-decoration: none;
+                display: block;
+            }
+    
+            #logo-container {
+                display: block;
+                margin: 8px 5px;
+
+                a {
+                    display: inline-block;
+                    vertical-align: middle;
+                    align-self: center;
+                    text-align: center;
+    
+                    img {
+                        width: 14px;
+                        -webkit-filter: invert(100%);
+                        filter: invert(100%);
+                        margin: 0 10px;
+                    }
+                }
+            }
+        }
+        
+        #hamburger {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: 48px;
+            height: 48px;
+            transition: all 0.25s;
+            z-index: 95!important;
+
+            #hamburger-top-bun,
+            #hamburger-bottom-bun {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 15px;
+                width: 18px;
+                height: 1px;
+                background: #fff;
+                transform: rotate(0);
+                transition: all 0.25s;
+            }
+
+            #hamburger-top-bun {
+                top: 23px;
+                transform: translateY(-3px);
+            }
+
+            #hamburger-bottom-bun {
+                bottom: 23px;
+                transform: translateY(3px);
+            }
+
+            &.open {
+                transform: rotate(90deg);
+
+                #hamburger-top-bun {
+                    transform: rotate(45deg) translateY(0px);
+                }
+    
+                #hamburger-bottom-bun {
+                    transform: rotate(-45deg) translateY(0px);
+                }
+            }
+        }  
+    }
+}
