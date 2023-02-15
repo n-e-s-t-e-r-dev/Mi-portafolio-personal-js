@@ -31,7 +31,7 @@ const getResidents = async (url) => {
         <p class="card-text">Status: ${data.status}</p>
         <p class="card-text">Gender: ${data.gender}</p>
         <p class="card-text">Id: ${data.id}</p>
-        <button class="buttom-rick"><i class='bx bx-transfer-alt'></i></button>
+        <button class="buttom-rick"> <a href="https://lighthearted-bavarois-7ab6e7.netlify.app/" target="_blank"><i class='bx bx-shield-plus'></i></a></button>
   </div>
         
         

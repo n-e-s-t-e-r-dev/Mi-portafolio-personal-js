@@ -1086,7 +1086,6 @@ header nav #logo-container a img {
   display: flex;
 }
 .rick-img{
-  border-radius: .5rem;
   width: 34rem;
   height: 18rem;
 }
@@ -1094,7 +1093,6 @@ header nav #logo-container a img {
   text-align: center;
 }
 .div-description{
-  border-radius: .5rem;
   padding: 1rem 2rem 1rem 2rem;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -1107,6 +1105,7 @@ header nav #logo-container a img {
   height: 35rem;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
+
 #projects-section
   #photography-projects
   #photography-right-side
