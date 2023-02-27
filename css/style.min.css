@@ -45,6 +45,7 @@ span,
 form {
   font-family: "Lustria", serif;
 }
+
 .link-button {
   background-color: #222;
   color: #fff;
@@ -1014,7 +1015,7 @@ header nav #logo-container a img {
   right: 15%;
   left: 15%;
   background: #c5ccb2;
-  background: linear-gradient( 90deg, rgb(12 13 10) 0%, rgb(117 2 2) 70% );
+  background: linear-gradient(90deg, rgb(12 13 10) 0%, rgb(117 2 2) 70%);
   z-index: 1;
 }
 #projects-section #photography-projects {
@@ -1076,27 +1077,27 @@ header nav #logo-container a img {
   top: 50%;
   transform: translateY(-50%);
 }
-.card-img-rick{
+.card-img-rick {
   border-radius: 1rem;
 }
 
-.container-rick{
+.container-rick {
   padding: 2rem;
   gap: 2rem;
-  display: flex;
+  display: grid;
 }
-.rick-img{
+.rick-img {
   width: 34rem;
   height: 18rem;
 }
-.dev-project-rick{
+.dev-project-rick {
   text-align: center;
 }
-.div-description{
+.div-description {
   padding: 1rem 2rem 1rem 2rem;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
-.card{
+.card {
   padding: 1rem;
   justify-content: space-between;
   font-weight: 700;
@@ -1130,7 +1131,35 @@ header nav #logo-container a img {
     h1 {
     font-size: calc(32px + 16 * (100vw - 320px) / 2240);
   }
+  .card {
+    width: 90%;
+    margin: 0;
+    border-radius: 0;
+    height: 38rem;
+  }
+  .div-description {
+    width: 90%;
+    padding: 1rem;
+    justify-content: baseline;
+  }
+  .div-description img {
+    width: 100%;
+  }
 }
+
+@media screen and (min-width: 560px) {
+  .container-rick {
+    display: flex;
+    height: 40rem;
+  }
+
+  .app {
+    height: 30rem;
+  }
+  .div-description {
+  }
+}
+
 @media screen and (min-width: 2560px) {
   #projects-section
     #photography-projects
@@ -1198,6 +1227,32 @@ header nav #logo-container a img {
     #photography-text
     a {
     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 470px) {
+  .container-rick {
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .card {
+    width: 90%;
+    margin: 0;
+    border-radius: 0;
+    height: 45rem;
+  }
+  .card img {
+    width: 100%;
+  }
+  .div-description {
+    width: 90%;
+    padding: 1rem;
+    justify-content: baseline;
+  }
+  .div-description img {
+    width: 100%;
   }
 }
 
@@ -1593,4 +1648,89 @@ footer {
     max-height: max(30vh, 45vw) !important;
     overflow: hidden !important;
   }
+  .dev-project-rick {
+    height: 50rem;
+  }
+  .container-rick {
+    width: 100%;
+    padding-top: 2rem;
+    
+  }
+  .card {
+    height: 33rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .div-description {
+    height: 33rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    padding-right: 2rem;
+    
+  }
+  .div-description img{
+    width: 100%;
+    margin-right: 3rem;
+  }
+  .div-100{
+    width: 100%;
+    height: 15rem;
+    background-color: #063786;
+  }
+  .rick-img{
+    width: 100%;
+    height: 100%;
+  }
 }
+
+@media (min-width: 1023px) {
+  body {
+    padding: 0 !important;
+  }
+  .loader {
+    z-index: 100 !important;
+  }
+  #content-menu {
+    height: auto !important;
+    flex-direction: column !important;
+    align-content: center !important;
+    margin: 80px auto 0 auto !important;
+    gap: 5px !important;
+  }
+  #content-menu .container {
+    width: 100% !important;
+    max-height: max(30vh, 45vw) !important;
+    overflow: hidden !important;
+  }
+  .dev-project-rick {
+    height: 50rem;
+    background-color: #e22b2b;
+  }
+  .container-rick {
+    width: 100%;
+    padding-top: 2rem;
+  }
+  .card {
+    height: 33rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .div-description {
+    height: 33rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .div-description img{
+    width: 100%;
+  }
+  .div-100{
+    width: 100%;
+    height: 15rem;
+    background-color: #063786;
+  }
+  .rick-img{
+    width: 100%;
+    height: 100%;
+  }
+}
+
